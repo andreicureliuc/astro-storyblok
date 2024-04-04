@@ -4,24 +4,24 @@ import Footer from "@/components/Footer.astro";
 
 
 const { story, language, langSwitch, page } = Astro.props;
-if(!story) return;
-const lang = story.lang?story.lang:"default";
-const content = story.content ? story.content : {};
+// if(!story) return;
+// const lang = story.lang?story.lang:"default";
+// const content = story.content ? story.content : {};
 ---
 
-<html lang={lang=="default" ? "en" : lang}>
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
-    <title>{story.content.Title?story.content.Title : story.name + " | NFON"}</title>
+    <!-- <title>{story.content.Title?story.content.Title : story.name + " | NFON"}</title>
     <meta name="description" content={story.content.description} />
     <meta name="keywords" content={story.content.keywords} />
     <link rel="stylesheet" href="/fonts.css" />
 
     <meta  property="og:image" content={story.content.og_image} />
     <meta property="og:description" content={story.content.og_description?story.content.og_description:story.content.description} />
-    <meta property="og:title" content={story.content.og_title ? story.content.og_title : story.content.Title?story.content.Title : story.name + " | NFON"} />
+    <meta property="og:title" content={story.content.og_title ? story.content.og_title : story.content.Title?story.content.Title : story.name + " | NFON"} /> -->
 
     <script
       src="https://www.nfon.com/typo3temp/assets/compressed/merged-ec3d868ab15aee8b84e21341ac5aaa6d-90df377f5ceecb9a622bf0b9d82722db.js.gzip?1693982932"
