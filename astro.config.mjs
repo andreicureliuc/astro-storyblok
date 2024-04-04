@@ -4,6 +4,7 @@ import { loadEnv } from 'vite'
 import tailwind from '@astrojs/tailwind'
 import mkcert from 'vite-plugin-mkcert';
 import { imageService } from "@unpic/astro/service";
+import netlify from "@astrojs/netlify";
 // import { lifecycleLogs } from 'src/integrations/lifecycle-logs'
 
 const env = loadEnv('', process.cwd(), 'STORYBLOK')
