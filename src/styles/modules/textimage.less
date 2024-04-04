@@ -1,0 +1,123 @@
+@import "@/styles/_globals.less";
+
+.textimage {
+  overflow: hidden;
+
+  &-content {
+    color: #fff;
+
+    h2 {
+      margin-bottom: 16px;
+    }
+
+    &-text {
+      font-weight: @font-weight__light;
+
+      p {
+        font-family: @font-family__base;
+        font-size: 1.7rem;
+        line-height: 2.7rem;
+      }
+    }
+
+    &-links {
+      margin-top: 32px;
+
+      a.button {
+        &:not(:first-child) {
+          margin-left: 24px;
+        }
+      }
+    }
+  }
+
+  &-head {
+    margin-bottom: 60px;
+  }
+}
+
+// max 1024
+@media (max-width: @sizes[tablet-wide-down]) {
+  .textimage {
+    &-inner {
+      > div:first-child {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
+
+// min 1024
+@media (min-width: @sizes[tablet-wide]) {
+  .textimage {
+    &-content {
+      .button-row {
+        margin-top: 22px;
+      }
+
+      h2 {
+        font-size: 3.2rem;
+        line-height: 41px;
+        font-weight: @font-weight__bold;
+      }
+
+      &-text {
+        p {
+          font-size: 1.7rem;
+          line-height: 2.7rem;
+        }
+      }
+    }
+
+    &-inner {
+      > div:first-child.textimage-content {
+        padding: 0 100px 0 0;
+      }
+
+      > div:first-child.textimage-image {
+        position: relative;
+
+        &.textimage-image-edge {
+          min-height: 700px;
+          max-height: 700px;
+        }
+
+        .textimage-image-container {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 50vw;
+          max-width: 960px;
+        }
+      }
+
+      > div:nth-child(2).textimage-content {
+        padding: 0 0 0 100px;
+      }
+
+      > div:nth-child(2).textimage-image {
+        .textimage-image-container {
+          width: 50vw;
+          max-width: 960px;
+          max-height: 700px;
+        }
+      }
+    }
+
+    &-image {
+      &-container {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+///
+//  customer story config
+//  ---------------------------------------------
+
+.section-container.bg-0 {
+  background-color: #3200cb;
+}

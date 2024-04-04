@@ -1,0 +1,70 @@
+---
+import "@/styles/modules/stepcontainer.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<section
+  class="section-container background-2 stepcontainer"
+  {...storyblokEditable(blok)}
+>
+  <div class="container">
+    <div class="flexs">
+      <div class="w-full stepcontainer-intro content-container">
+        <h2>How secure is the cloud?</h2>
+      </div>
+
+      <div class="stepcontainer-content">
+        <div class="flex gap-[48px]">
+          <div class="w-6/12 stepcontainer-content-text">
+            <div class="col stepcontainer-block-wrapper">
+              {
+                blok.block_items?.map((step, index) => (
+                  <StoryblokComponent blok={step} key={index} />
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="col stepcontainer-counter-container">
+            <ul>
+              {
+                blok.block_items?.map((step, index) => (
+                  <li
+                    class="stepcontainer-counter-block"
+                    data-step-counter={index}
+                  >
+                    <span />
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="w-6/12 stepcontainer-content-image">
+            <div class="stepcontainer-image-wrapper">
+              {
+                blok.block_items?.map((step, index) => (
+                  <div
+                    class="stepcontainer-image"
+                    data-image-step-block={index}
+                  >
+                    <div class="stepcontainer-image-container">
+                      <img src={step.image.filename} />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "@/scripts/modules/stepcontainer.js";
+</script>

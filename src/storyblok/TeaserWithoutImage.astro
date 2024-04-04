@@ -1,0 +1,66 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<a
+  href={blok?.link?.story ? blok.link.story.full_slug : "#"}
+  class="textteaser-item"
+  {...storyblokEditable(blok)}
+>
+  <div class="textteaser-item-inner">
+    <h4>{blok.headline}</h4>
+    <p>{blok.content}</p>
+
+    <div class="textteaser-item-arrow"></div>
+  </div>
+</a>
+
+<style scoped lang="scss">
+  .textteaser-item-inner {
+    padding: 24px 24px 35px;
+    background-color: #000;
+    position: relative;
+    width: 100%;
+    transition: 0.25s ease;
+    min-height: 352px;
+
+    &:hover {
+      background-color: #3200cb;
+    }
+
+    h4 {
+      color: #fff;
+      margin-bottom: 24px;
+      font-size: 1.8rem;
+      line-height: 28px;
+      font-weight: 700;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+    }
+
+    p {
+      color: #fff;
+      padding: 0 0 24px;
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  .textteaser-item-arrow {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("/icons/arrow-right.svg");
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+  }
+</style>

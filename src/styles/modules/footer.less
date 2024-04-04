@@ -1,0 +1,163 @@
+@import "@/styles/_globals.less";
+
+footer {
+  background-color: @background__color-2;
+
+  .footer {
+    &-main-container {
+      margin-bottom: 27px;
+    }
+
+    &-bottom-container {
+      padding-top: 27px;
+    }
+
+    &-main-container,
+    &-bottom-container {
+      a {
+        color: @base__color-2;
+      }
+    }
+
+    &-copyright p,
+    ul li {
+      font-size: 1.5rem;
+      line-height: 2.3rem;
+      font-family: @font-family__medium;
+      color: @base__color-2;
+    }
+
+    &-headline,
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    &-headline {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      font-weight: @font-weight__bold;
+      color: @base__color-2;
+    }
+
+    ul {
+      li {
+        a {
+          font-weight: @font-weight__light;
+          font-family: @font-family__secondary;
+
+          &:hover {
+            text-underline-offset: 0.36em;
+          }
+        }
+      }
+    }
+
+    &-social {
+      ul {
+        display: flex;
+      }
+    }
+
+    &-metalinks {
+      ul {
+        li {
+          margin-bottom: 0;
+          font-size: 1.3rem;
+          line-height: 1.8rem;
+        }
+      }
+    }
+
+    &-copyright {
+      p {
+        padding: 0;
+      }
+    }
+  }
+}
+
+// max 1024
+@media (max-width: @sizes[tablet-wide-down]) {
+  footer {
+    .footer {
+      &-main-container {
+        padding-top: 32px;
+      }
+
+      &-bottom-container {
+        padding-bottom: 56px;
+      }
+
+      &-block {
+        margin-bottom: 34px;
+      }
+
+      &-metalinks {
+        ul {
+          li {
+            margin-bottom: 12px;
+
+            &:last-child {
+              margin-bottom: 24px;
+            }
+          }
+        }
+      }
+
+      &-social {
+        ul {
+          li {
+            &:not(:last-child) {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// min 1024
+@media (min-width: @sizes[tablet-wide]) {
+  footer {
+    .footer {
+      &-main-container {
+        padding-top: 56px;
+      }
+
+      &-bottom-container {
+        padding-bottom: 27px;
+      }
+
+      &-metalinks {
+        ul {
+          display: flex;
+
+          li {
+            &:not(:last-child) {
+              margin-right: 24px;
+            }
+          }
+        }
+      }
+
+      &-copyright {
+        text-align: right;
+      }
+
+      &-social {
+        margin-top: -5px;
+
+        ul {
+          justify-content: center;
+
+          li {
+            &:not(:last-child) {
+              margin-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,188 @@
+//
+// Font families
+// ---------------------------------------------
+@font-family__sans-serif: 'Pangram Sans', '-apple-system', 'BlinkMacSystemFont', 'Helvetica', 'Arial', sans-serif;
+
+@font-family__base: @font-family__sans-serif;
+@font-family__secondary: @font-family__base;
+@font-family__medium: @font-family__base;
+
+
+//
+// Font Sizes
+// (px) for rem calculation
+// --------------------------------------------
+@font-size__base: 17;
+@font-size__base-wide: 17;
+
+//
+//  Headlines
+//  ---------------------------------------------
+
+//
+// H1 Headlines
+// Mobile Viewport
+// --------------------------------------------
+@h1-headline-font-family: @font-family__secondary;
+@h1-headline-font-size: 30; //(px) for rem calculation
+@h1-headline-line-height: 36px;
+@h1-headline-margin-bottom: 8px;
+
+//
+// Desktop Viewport
+// --------------------------------------------
+@h1-headline-font-size-desktop: 38; //(px) for rem calculation
+@h1-headline-line-height-desktop: 44px;
+@h1-headline-margin-bottom-desktop: 16px;
+@h1-headline-font-weight: @font-weight__bold;
+
+//
+// H2 Headlines
+// Mobile Viewport
+// --------------------------------------------
+@h2-headline-font-family: @font-family__secondary;
+@h2-headline-font-size: 26; //(px) for rem calculation
+@h2-headline-line-height: 31px;
+@h2-headline-margin-bottom: 16px;
+
+//
+// Desktop Viewport
+// --------------------------------------------
+@h2-headline-font-size-desktop: 32; //(px) for rem calculation
+@h2-headline-line-height-desktop: 41px;
+@h2-headline-margin-bottom-desktop: 16px;
+@h2-headline-font-weight: @font-weight__bold;
+
+//
+// H3 Headlines
+// Mobile Viewport
+// --------------------------------------------
+@h3-headline-font-family: @font-family__secondary;
+@h3-headline-font-size: 22; //(px) for rem calculation
+@h3-headline-line-height: 26px;
+@h3-headline-margin-bottom: 16px;
+
+//
+// Desktop Viewport
+// --------------------------------------------
+@h3-headline-font-size-desktop: 24; //(px) for rem calculation
+@h3-headline-line-height-desktop: 34px;
+@h3-headline-margin-bottom-desktop: 16px;
+@h3-headline-font-weight: @font-weight__bold;
+
+
+//
+// H4,H5,H6, ... Headlines
+// Mobile Viewport
+// --------------------------------------------
+@headline-font-family: @font-family__medium;
+@headline-font-size: 18; //(px) for rem calculation
+@headline-line-height: 26px;
+@headline-margin-bottom: 12px;
+
+//
+// Desktop Viewport
+// --------------------------------------------
+@headline-font-size-desktop: 18; //(px) for rem calculation
+@headline-line-height-desktop: 28px;
+@headline-font-weight: @font-weight__bold;
+@headline-margin-bottom-desktop: 12px;
+
+//  Weights
+@font-weight__extralight: 300;
+@font-weight__light: 400;
+@font-weight__regular: 500;
+@font-weight__medium: 600;
+@font-weight__bold: 700;
+@font-weight__black: 800;
+
+@base__color-1: #000000;
+@base__color-2: #ffffff;
+@base__color-3: #3200cb;
+@base__color-4: #00ff91;
+@base__color-5: #f3f6f8;
+@base__color-6: #00ff91;
+@base__color-7: #b0cad5;
+@base__color-8: #e22800;
+@base__color-9: #999999;
+@base__color-10: #8e8e8f;
+@base__color-11: #d1d1d2;
+@base__color-12: #e0ddf4;
+
+@base-hover__color-1: #383838;
+@base-hover__color-4: #27e090;
+
+@base-active__color-4: #1ecf82;
+
+@brand__color-1: #00f0ff;
+@brand__color-2: #ffdc00;
+@brand__color-3: #c8ff02;
+@brand__color-4: #ff6473;
+@brand__color-5: #00b1c2;
+@brand__color-6: #00006e;
+@brand__color-7: #0a66c2;
+
+@brand-hover__color-1: #00ccd9;
+@brand-hover__color-2: #d9bb00;
+@brand-hover__color-3: #aad902;
+@brand-hover__color-4: #d95562;
+@brand-hover__color-5: #009faf;
+
+@background__color-1: #f3f6f8;
+@background__color-2: #000000;
+@background__color-3: #3200cb;
+@background__color-4: #00ff91;
+
+@shadow__color-1: #d4d3d3;
+
+//  XML
+//  ---------------------------------------------
+
+@base__color-1__xml: "%23000000";
+@base__color-2__xml: "%23ffffff";
+@base__color-3__xml: "%233200CB";
+@base__color-4__xml: "%2300FF91";
+@base__color-5__xml: "%23F3F6F8";
+@base__color-6__xml: "%2300FF91";
+@base__color-7__xml: "%23B0CAD5";
+@base__color-8__xml: "%23E22800";
+@base__color-9__xml: "%23999999";
+
+@brand__color-1__xml: "%2300f0ff";
+@brand__color-2__xml: "%23ffdc00";
+@brand__color-3__xml: "%23c8ff02";
+@brand__color-4__xml: "%23ff6473";
+@brand__color-5__xml: "%2300b1c2";
+@brand__color-6__xml: "%2300006e";
+@brand__color-7__xml: "%230A66C2";
+
+//  RGB
+//  ---------------------------------------------
+
+@base__color-1__rgb: 61, 61, 61;
+@base__color-2__rgb: 255, 255, 255;
+@base__color-3__rgb: 50, 0, 203;
+@base__color-4__rgb: 0, 255, 145;
+@base__color-5__rgb: 106, 220, 255;
+@base__color-6__rgb: 50, 0, 203;
+@base__color-7__rgb: 253, 241, 66;
+@base__color-8__rgb: 41, 71, 6;
+@base__color-9__rgb: 0, 0, 0;
+
+
+
+@sizes: {
+  mobile-down: 319px;
+  mobile: 320px;
+  smart-down: 419px;
+  smart: 420px;
+  tablet-down: 767px;
+  tablet: 768px;
+  tablet-wide-down: 1023px;
+  tablet-wide: 1024px;
+  desktop-down: 1219px;
+  desktop: 1220px;
+  desktop-wide-down: 1659px;
+  desktop-wide: 1660px;
+  desktop-medium: 1440px;
+}

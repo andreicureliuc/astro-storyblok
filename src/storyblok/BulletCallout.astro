@@ -1,0 +1,42 @@
+---
+import "@/styles/modules/bulletcallout.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<section
+  class="section-container contactbanner contactbanner-no-padding background-0"
+  {...storyblokEditable(blok)}
+>
+  <div class="container">
+    <div class="flex">
+      <div class="w-6/12">
+        <div class="contactbanner-item contactbanner-item-left">
+          <h2>Ready to get started?</h2>
+          <div class="contactbanner-item-button">
+            {
+              blok?.link?.story && (
+                <a href={blok.link.story.full_slug} class="button type-1">
+                  {blok.link_text ? blok.link_text : "Read more"}
+                </a>
+              )
+            }
+          </div>
+        </div>
+      </div>
+      <div class="w-6/12 contactbanner-item-outer">
+        <div class="contactbanner-item contactbanner-item-blue">
+          <ul>
+            {
+              blok.bullet_items?.map((bullet) => {
+                return <li>{bullet.name}</li>;
+              })
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

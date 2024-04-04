@@ -1,0 +1,26 @@
+---
+import "@/styles/modules/tabcontainer.less";
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok, key } = Astro.props;
+---
+
+<li class="tabcontainer-block" data-step-block={key} {...storyblokEditable(blok)}>
+  <div class="tabcontainer-block-head">
+    <h4>{blok.headline}</h4>
+  </div>
+  <div class="tabcontainer-block-content content-container">
+    <div class="tabcontainer-block-content-inner">
+      <p>{blok.content}</p>
+      {
+        blok?.link?.story && (
+          <div class="button-row">
+            <a href={blok.link.story.full_slug} class="button">
+              Read more
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</li>

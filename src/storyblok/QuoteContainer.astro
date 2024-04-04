@@ -1,0 +1,38 @@
+---
+import "@/styles/modules/quotecontainer.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<section class="section-container background-1" {...storyblokEditable(blok)}>
+  <div class="container">
+    <div class="flex">
+      <div class="w-full">
+        <div class="quotecontainer">
+          <div class="quotecontainer-wrapper">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                {
+                  blok?.quote_items?.map((item) => {
+                    return <StoryblokComponent blok={item} />;
+                  })
+                }
+              </div>
+              <div class="slider-controls hidden">
+                <div class="slider-pagination"></div>
+                <div class="slider-button-prev"></div>
+                <div class="slider-button-next"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "@/scripts/modules/quotecontainerslider.js";
+</script>

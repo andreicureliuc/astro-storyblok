@@ -1,0 +1,69 @@
+---
+import "@/styles/modules/eventbanner.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+
+const { blok } = Astro.props;
+---
+
+<section
+  class="section-container event-banner-container background-3"
+  {...storyblokEditable(blok)}
+>
+  <div class="container">
+    <div class="flex">
+      <div class="w-full" style="z-index: 1">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="event-banner-item flex">
+                <div class="w-4/12 m-5 left-column">
+                  <img
+                    class="image"
+                    src={blok.image.filename}
+                    width="400"
+                    draggable="false"
+                  />
+                </div>
+
+                <div class="w-8/12 right-column">
+                  <div class="head">
+                    <p>{blok.category}</p>
+                  </div>
+
+                  <div class="content">
+                    <h3 class="headline-h3">{blok.headline}</h3>
+                    <RichTextRenderer
+                    content={blok.content}
+                    resolver={(blok) => {
+                      return {
+                        component: StoryblokComponent,
+                        props: { blok },
+                      };
+                    }}
+                    {...storyblokEditable(blok)}
+                  />
+                  </div>
+
+                  <div class="button-container">
+                    {
+                      blok?.link?.story && (
+                        <a
+                          href={blok.link.story.full_slug}
+                          class="button type-1"
+                        >
+                          {blok.link_text ? blok.link_text : "Read more"}
+                        </a>
+                      )
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

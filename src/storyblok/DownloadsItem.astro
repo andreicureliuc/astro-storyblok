@@ -1,0 +1,19 @@
+---
+import "@/styles/modules/downloadsitem.less";
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="w-6/12 downloads-item" {...storyblokEditable(blok)}>
+  <div class="downloads-item-check"></div>
+  <div class="downloads-item-text">
+    <h4>{blok.item_title}</h4>
+
+    <ul>
+      <li>
+        <a href={blok.item_attachment?.filename}>{blok.file_name}</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { removeLanguagePrefix } from "../utils";
+import "astro-breadcrumbs/breadcrumbs.css";
+import "@/styles/modules/breadcrumbs.less";
+import { Breadcrumbs } from "astro-breadcrumbs";
+const { blok } = Astro.props;
+---
+
+<section class="teaser" {...storyblokEditable(blok)}>
+  <div class="container mx-auto flex flex-wrap">
+    <div class="teaser__content">
+      <h1>{blok.headline}</h1>
+      <p>{blok.subheadline}</p>
+
+      <div class="teaser__btn__container">
+        {
+          blok.buttons &&
+            blok.buttons.map((button) => {
+              return (
+                <a
+                  href={
+                    button?.link?.story
+                      ? removeLanguagePrefix(button.link.story.full_slug)
+                      : "#"
+                  }
+                  class="teaser__btn"
+                >
+                  {button.label}
+                </a>
+              );
+            })
+        }
+      </div>
+
+      <!-- {
+        blok.test_links &&
+          blok.test_links.map((button) => {
+            return (
+              <div>
+              <a href={removeLanguagePrefix(button.test_links.full_slug)} class="teaser__btn">
+                {button.title}
+              </a>
+              <span class="text-white">{button.test_links.full_slug}</span>
+              </div>
+            );
+          })
+      } -->
+    </div>
+
+    <div class="teaser__image__container">
+      <img
+        src={blok.background_image.filename}
+        alt={blok.background_image?.alt}
+        class="teaser_image"
+      />
+    </div>
+
+    <Breadcrumbs>
+      <svg
+        slot="separator"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </Breadcrumbs>
+  </div>
+</section>
+
+<style scoped lang="scss">
+  $color_1: #000;
+  $color_2: white;
+  $background-color_1: #000;
+  $background-color_2: #00ff91;
+
+  .teaser {
+    position: relative;
+    background-color: $background-color_1;
+    overflow: hidden;
+
+    h1 {
+      color: $color_2;
+    }
+
+    p {
+      font-size: 1.5rem;
+      line-height: 2.3rem;
+      color: $color_2;
+      padding: 0 0 8px;
+    }
+
+    &__content {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding-right: 64px;
+    }
+
+    &__image__container {
+      width: 50%;
+    }
+
+    &_image {
+      width: 50vw;
+      max-width: 960px;
+    }
+
+    &__btn {
+      margin-top: 20px;
+      display: block;
+      padding: 11px 28px;
+      font-size: 16px;
+      text-align: center;
+      color: $color_1;
+      background-color: $background-color_2;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      width: auto;
+      align-self: flex-start;
+    }
+
+    &__btn__container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+  }
+</style>

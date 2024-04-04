@@ -1,0 +1,69 @@
+---
+import "@/styles/modules/textimage.less";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<section class="section-container bg-0" {...storyblokEditable(blok)}>
+  <div class="textimage">
+    <div class="container">
+      <div class="flex">
+        <div class="w-full">
+          <div class="textimage-outer">
+            <div class="flex textimage-inner">
+              <div
+                class="textimage-content w-6/12"
+                style={blok.image_position === "left"
+                  ? { order: "2", padding: "0 0 0 100px" }
+                  : { order: "1", padding: "0 100px 0 0" }}
+              >
+                <h2>{blok.headline}</h2>
+                <div class="textimage-content-text">
+                  <RichTextRenderer
+                    content={blok.longtext}
+                    resolver={(blok) => {
+                      return {
+                        component: StoryblokComponent,
+                        props: { blok },
+                      };
+                    }}
+                    {...storyblokEditable(blok)}
+                  />
+                </div>
+
+                <div class="button-row">
+                  {
+                    blok?.link?.story && (
+                      <a href={blok.link.story.full_slug} class="button type-2">
+                        {blok.link_text}
+                      </a>
+                    )
+                  }
+                </div>
+              </div>
+              <div
+                class="textimage-image w-6/12 grid place-items-center"
+                style={blok.image_position === "left"
+                  ? { order: "1" }
+                  : { order: "2" }}
+              >
+                <img
+                  alt="Not just safe, Germany safe | NFON"
+                  data-speed="0"
+                  data-src={blok.image.filename}
+                  draggable="false"
+                  src={blok.image.filename}
+                  title="Not just safe, Germany safe | NFON"
+                  class="h-[397px]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

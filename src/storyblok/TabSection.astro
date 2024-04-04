@@ -1,0 +1,129 @@
+---
+import "@/styles/modules/tabsection.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+
+const { blok } = Astro.props;
+const tabs = blok.tabs;
+---
+
+<div {...storyblokEditable(blok)}>
+  <section class="section-container tabber background-0">
+    <div class="tabber-outer">
+      <div class="container">
+        <div class="flex-col">
+          <div class="col xs-12">
+            <div class="tabber-headline">
+              <h2>{blok.headline}</h2>
+            </div>
+            <div class="tabber-wrapper">
+              <div class="tabber-head">
+                <ul>
+                  {
+                    tabs?.map((tab, index) => {
+                      return (
+                        <li
+                          class="brand-color-scheme-1"
+                          data-tab-nav-id={index}
+                        >
+                          <span class="icon">
+                            <img src={tab.tab_icon.filename} width="40" />
+                          </span>{" "}
+                          {tab.tab_name}
+                        </li>
+                      );
+                    })
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-size-sl tabber-lower">
+      <div class="flex-col">
+        <div class="col xs-12">
+          <div class="tabber-content">
+            {
+              tabs?.map((tab, index) => {
+                return (
+                  <div
+                    class="tabber-content-item brand-color-scheme-1"
+                    data-tab-content-id={index}
+                  >
+                    <section
+                      class="section-container contentrow background-0"
+                      id={index}
+                    >
+                      <div class="site-content">
+                        <div class="container">
+                          <div class="flex">
+                            <div class="w-full">
+                              <div class="flex row-inner">
+                                <div class="w-full" data-distribution="100">
+                                  <div class="textteaser" data-uid="1359839">
+                                    <div class="content-container">
+                                      <div class="textteaser-inner">
+                                        <div class="textteaser-background" />
+                                        <>
+                                          <div class="textteaser-intro">
+                                            <h3>{tab.tab_headline}</h3>
+                                            <RichTextRenderer
+                                              content={tab.tab_introtext}
+                                              resolver={(blok) => {
+                                                return {
+                                                  component: StoryblokComponent,
+                                                  props: { blok },
+                                                };
+                                              }}
+                                              {...storyblokEditable(blok)}
+                                            />
+                                          </div>
+
+                                          <div class="swiper-container">
+                                            <div class="swiper-wrapper grid grid-cols-3 gap-[48px]">
+                                              {tab.tab_teasers?.map(
+                                                (teaser) => {
+                                                  return (
+                                                    <StoryblokComponent
+                                                      blok={teaser}
+                                                    />
+                                                  );
+                                                }
+                                              )}
+                                            </div>
+                                            <div class="slider-controls hidden">
+                                              <div class="slider-pagination" />
+                                              <>
+                                                <div class="slider-button-prev" />
+                                                <div class="slider-button-next" />
+                                              </>
+                                            </div>
+                                          </div>
+                                        </>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  import "@/scripts/modules/tabber.js";
+</script>

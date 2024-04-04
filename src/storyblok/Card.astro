@@ -1,0 +1,35 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<a href={blok.link.story.full_slug} {...storyblokEditable(blok)}>
+  <div class="textteaser-item-inner">
+    <h4>{blok.headline}</h4>
+    <p>{blok.content}</p>
+    {blok.card_type === "simple-card" && <div class="textteaser-item-arrow" />}
+  </div>
+</a>
+
+<style scoped lang="scss">
+  .textteaser-item-inner {
+    padding: 24px 24px 35px;
+    background-color: #000;
+    position: relative;
+    width: 100%;
+    transition: 0.25s ease;
+    min-height: 352px;
+  }
+
+  .textteaser-item-inner h4 {
+    margin-bottom: 24px;
+  }
+
+  .textteaser-item h2,
+  .textteaser-item h3,
+  .textteaser-item h4,
+  .textteaser-item p {
+    color: #fff;
+  }
+</style>

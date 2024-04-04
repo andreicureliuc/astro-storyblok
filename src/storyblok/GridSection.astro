@@ -1,0 +1,27 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<section
+  class="py-20"
+  style={blok.background_image &&
+    `background-image: url(${blok.background_image?.filename}); background-repeat: no-repeat; background-size: cover; background-position: center; `}
+  {...storyblokEditable(blok)}
+>
+  <div class="container mx-auto">
+    <h1 class="text-3xl font-bold">{blok.headline}</h1>
+    <div
+      class=`grid grid-cols-${blok.cols} gap-4 my-12`
+      style={`grid-template-columns: repeat(${blok.cols}, minmax(0, 1fr));`}
+    >
+      {
+        blok.cards?.map((blok) => {
+          return <StoryblokComponent blok={blok} />;
+        })
+      }
+    </div>
+  </div>
+</section>

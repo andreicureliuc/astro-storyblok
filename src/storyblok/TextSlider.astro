@@ -1,0 +1,66 @@
+---
+import "@/styles/modules/textslider.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<section
+  class="section-container textslider-background textslider"
+  {...storyblokEditable(blok)}
+>
+  <div class="text-slider-background">
+    <svg
+      width="1440"
+      height="453"
+      viewBox="0 0 1440 453"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g opacity="0.2">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M-106 458.005H109.551L341.653 230.923L683.114 565.01L790.889 459.578L449.417 125.479L341.653 20.0464L-106 458.005Z"
+          fill="#000000"></path>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M807.283 0L697.973 105.444L1039.45 439.531L1147.22 544.964L1255 439.531L1594 107.862H1378.45L1147.22 334.087L807.283 0Z"
+          fill="#000000"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="container">
+    <div class="flex">
+      <div>
+        <div class="textslider-inner">
+          <div class="textslider-content">
+            <div class="textslider-headline">
+              <h2>Discover our business solutions</h2>
+            </div>
+            <div class="slider-controls">
+              <div class="slider-pagination"></div>
+              <div class="slider-button-prev"></div>
+              <div class="slider-button-next"></div>
+            </div>
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                {
+                  blok.teaser_list?.map((teaser) => {
+                    return <span class="swiper-slide textslider-item textslider-item-blue swiper-slide-active"><StoryblokComponent blok={teaser} /></span>;
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "@/scripts/modules/textslider.js";
+</script>

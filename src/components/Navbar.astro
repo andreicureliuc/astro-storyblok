@@ -1,0 +1,466 @@
+---
+import "@/styles/modules/navigation.less";
+import { languages, getTransLink } from "../utils/langs";
+const { language, langSwitch } = Astro.props;
+
+import { isPreview, removeLanguagePrefix, languageFormat } from "../utils";
+
+import { useStoryblokApi } from "@storyblok/astro";
+
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get(
+  "cdn/stories/technical-components/navbar",
+  {
+    version: isPreview() ? "draft" : "published",
+    resolve_links: "url",
+    language,
+  }
+);
+
+const headerMenu = data?.story?.content?.header_menu;
+---
+
+<header>
+  <div class="navigation sticky">
+    <div class="content-size-ml">
+      <div class="navigation-wrapper">
+        <div class="container">
+          <div class="flex-col navigation-inner">
+            <div class="col xs-12">
+              <div class="navigation-inner-special">
+                <div class="navigation-logo-container">
+                  <a class="logo" href="/en/" title="NFON AG"
+                    ><img
+                      alt=""
+                      draggable="false"
+                      height="35"
+                      src="https://www.nfon.com/assets/_build/frontend-legacy/frontend-rebranding/images/logos/logo-nfon.svg?1661328126"
+                      width="150"
+                    />
+                  </a>
+                </div>
+                <div class="navigation-burger">
+                  <a class="hamburger"><span></span> </a>
+                </div><div class="navigation-elements" id="navigation-elements">
+                  <div class="navigation-main">
+                    <ul class="level-0-container">
+                      {
+                        headerMenu.map((menu) => (
+                          <li class="level-0 has-children">
+                            <a
+                              href={`${language ? getTransLink(language, `/${removeLanguagePrefix(menu.link.cached_url)}`) : "#"}`}
+                              class="navigation-toggle-link"
+                              title={menu.label}
+                            >
+                              {menu.label}
+                            </a>
+
+                            <>
+                              <span class="navigation-toggle" />
+                              <div class="navigation-container">
+                                {menu.sections.map((section) => (
+                                  <div class="navigation-container-item w-4/12">
+                                    <span class="navigation-inner-toggle">
+                                      {section.title}
+                                    </span>
+                                    <>
+                                      <p>{section.description}</p>
+
+                                      <ul class="level-1-container">
+                                        {section.links.map((link) => (
+                                          <li class="level-1">
+                                            <a
+                                              href={`${language && link?.target?.story ? getTransLink(language, `/${removeLanguagePrefix(link?.target?.story?.full_slug)}`) : "#"}`}
+                                              title={link.text}
+                                            >
+                                              {link.text}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </>
+                                  </div>
+                                ))}
+                              </div>
+                            </>
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                  <div class="navigation-additional">
+                    <ul class="navigation-additional-list">
+                      <li class="navigation-search icon search">
+                        <a href="#"></a>
+                        <div class="navigation-search-form">
+                          <form
+                            action="/en/search-results?tx_integration_searchresults%5Baction%5D=results&tx_integration_searchresults%5Bcontroller%5D=Search&cHash=dc4015d402cfe38e48d9e442d3be9d7c"
+                            method="get"
+                          >
+                            <div>
+                              <input
+                                name="tx_integration_searchresults[__referrer][@extension]"
+                                type="hidden"
+                                value=""
+                              />
+                              <input
+                                name="tx_integration_searchresults[__referrer][@controller]"
+                                type="hidden"
+                                value="Standard"
+                              /><input
+                                name="tx_integration_searchresults[__referrer][@action]"
+                                type="hidden"
+                                value="oneColumn"
+                              /><input
+                                name="tx_integration_searchresults[__referrer][arguments]"
+                                type="hidden"
+                                value="YTowOnt9c729f830110b489944fcd36c37ceb377c9d3b128"
+                              /><input
+                                name="tx_integration_searchresults[__referrer][@request]"
+                                type="hidden"
+                                value='a:3:{s:10:"@extension";N;s:11:"@controller";s:8:"Standard";s:7:"@action";s:9:"oneColumn";}c2d39518091ec59cc46b54d5ec43d81aaa8b6287'
+                              /><input
+                                name="tx_integration_searchresults[__trustedProperties]"
+                                type="hidden"
+                                value='a:1:{s:6:"demand";a:1:{s:10:"searchWord";i:1;}}1b112cf7ee5afbddc9d3a951b4def5b0f5df1786'
+                              />
+                            </div>
+                            <div class="navigation-search-inner">
+                              <input
+                                class="navigation-search-icon"
+                                type="submit"
+                                value=""
+                              />
+                              <input
+                                class="navigation-search-input search-input"
+                                name="tx_integration_searchresults[demand][searchWord]"
+                                type="search"
+                              /><span class="search-reset"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </li>
+                      <li class="icon login">
+                        <a
+                          href="https://start.cloudya.com/"
+                          rel="noopener"
+                          target="_blank"
+                          title="Login"
+                          ><span>Login</span>
+                        </a>
+                      </li>
+                      <li class="navigation-language-switcher">
+                        <a class="navigation-language-toggle uppercase" href="#"
+                          >{language}</a
+                        >
+                        <ul class="navigation-language-list">
+                          {
+                            languages.map((lang) => (
+                              <>
+                                <li>
+                                  <a
+                                    href={
+                                      langSwitch && langSwitch[lang]
+                                        ? langSwitch[lang]
+                                        : "#"
+                                    }
+                                    lang="de"
+                                  >
+                                    {languageFormat(lang)}
+                                  </a>
+                                </li>
+                              </>
+                            ))
+                          }
+                        </ul>
+                      </li>
+                      <li class="navigation-contact icon contact">
+                        <div class="navigation-contact-mobile-only">
+                          <a class="button type-1" href="#">Contact Us</a>
+                        </div>
+                        <a class="button type-1" href="#">Contact</a><div
+                          class="navigation-contact-box"
+                        >
+                          <ul class="navigation-contact-nav">
+                            <li class="active" data-contact-nav-id="0">
+                              <a href="#">Contact Us</a>
+                            </li>
+                            <li data-contact-nav-id="1">
+                              <a href="#">Request call back</a>
+                            </li>
+                          </ul>
+                          <div
+                            class="navigation-contact-content active"
+                            data-contact-content-id="0"
+                          >
+                            <div class="navigation-contact-content-upper">
+                              <div
+                                class="navigation-contact-content-upper-item"
+                              >
+                                <p>Contact sales:</p>
+                                <p>
+                                  <a href="tel:+498000636624">
+                                    +49 8000 - 63 66 24
+                                  </a>
+                                </p>
+                              </div>
+                              <div
+                                class="navigation-contact-content-upper-item"
+                              >
+                                <p>Contact support:</p>
+                                <p>
+                                  <a href="tel:+498006366555">
+                                    +49 800 63 66 555
+                                  </a>
+                                </p>
+                              </div>
+                            </div>
+                            <div class="navigation-contact-content-lower">
+                              <p>Or send us a request</p>
+                              <a
+                                class="button type-2"
+                                href="/en/request-information"
+                                id="write-us"
+                                title="Contact Us"
+                              >
+                                Write us
+                              </a>
+                            </div>
+                          </div><div
+                            class="navigation-contact-content"
+                            data-contact-content-id="1"
+                          >
+                            <div class="navigation-contact-content-upper">
+                              <div
+                                class="navigation-contact-content-upper-item"
+                              >
+                                <p>Contact sales:</p>
+                                <p>
+                                  <a href="tel:+498000636624">
+                                    +49 8000 - 63 66 24
+                                  </a>
+                                </p>
+                              </div>
+                            </div>
+                            <div class="navigation-contact-content-lower">
+                              <div
+                                class="content-container align-center"
+                                id="c"
+                              >
+                                <form
+                                  action="/en/get-started/cloud-telephony/lexicon?tx_form_formframework%5Baction%5D=perform&tx_form_formframework%5Bcontroller%5D=FormFrontend&cHash=be1e3dfab28b9fdf15d181d4c91addfe#Callback-"
+                                  class="form form-container m-content"
+                                  data-custom-event=""
+                                  data-custom-lead-type=""
+                                  data-form-name="Callback"
+                                  data-uid=""
+                                  enctype="multipart/form-data"
+                                  id="Callback-"
+                                  method="post"
+                                >
+                                  <div>
+                                    <input
+                                      name="tx_form_formframework[Callback-][__state]"
+                                      type="hidden"
+                                      value="TzozOToiVFlQTzNcQ01TXEZvcm1cRG9tYWluXFJ1bnRpbWVcRm9ybVN0YXRlIjoyOntzOjI1OiIAKgBsYXN0RGlzcGxheWVkUGFnZUluZGV4IjtpOjA7czoxMzoiACoAZm9ybVZhbHVlcyI7YTowOnt9fQ==0e111c8b321973a1d551dee625dbfe4a531018f6"
+                                    /><input
+                                      name="tx_form_formframework[__trustedProperties]"
+                                      type="hidden"
+                                      value='a:1:{s:9:"Callback-";a:7:{s:23:"y4uZP5lC13pwqSM9RgnhkFa";i:1;s:8:"fullname";i:1;s:4:"city";i:1;s:13:"callbackPhone";i:1;s:15:"alreadyCustomer";i:1;s:17:"friendlyCaptcha-1";i:1;s:13:"__currentPage";i:1;}}32d6cdf0192a2f71418d38a07d4e9e1a6d8ea8b7'
+                                    />
+                                  </div>
+                                  <input
+                                    aria-hidden="true"
+                                    autocomplete="y4uZP5lC13pwqSM9RgnhkFa"
+                                    id="callback--y4uZP5lC13pwqSM9RgnhkFa"
+                                    name="tx_form_formframework[Callback-][y4uZP5lC13pwqSM9RgnhkFa]"
+                                    style="position:absolute; margin:0 0 0 -999em;"
+                                    tabindex="-1"
+                                    type="text"
+                                  /><div class="field-group">
+                                    <div
+                                      class="input"
+                                      data-field-name="fullname"
+                                    >
+                                      <input
+                                        class="form-control"
+                                        id="callback--fullname"
+                                        name="tx_form_formframework[Callback-][fullname]"
+                                        placeholder="First & Lastname*"
+                                        required=""
+                                        type="text"
+                                      />
+                                    </div>
+                                  </div><div class="field-group">
+                                    <div class="sb-show" data-field-name="city">
+                                      <input
+                                        aria-hidden="1"
+                                        autocomplete="pbuCSw3H0P1zXL"
+                                        class="form-control"
+                                        id="callback--city"
+                                        name="tx_form_formframework[Callback-][city]"
+                                        placeholder="City"
+                                        type="text"
+                                      />
+                                    </div>
+                                  </div><div class="field-group">
+                                    <div
+                                      class="input"
+                                      data-field-name="callbackPhone"
+                                    >
+                                      <input
+                                        class="form-control"
+                                        id="callback--callbackPhone"
+                                        name="tx_form_formframework[Callback-][callbackPhone]"
+                                        pattern="^[\d+\-–()/*]+$"
+                                        placeholder="Telephone*"
+                                        required=""
+                                        type="tel"
+                                        value=""
+                                      />
+                                    </div>
+                                  </div><div class="field-group">
+                                    <div
+                                      class="input checkbox"
+                                      data-field-name="alreadyCustomer"
+                                    >
+                                      <div class="form-check">
+                                        <label
+                                          class="add-on form-check-label"
+                                          for="callback--alreadyCustomer"
+                                          ><input
+                                            name="tx_form_formframework[Callback-][alreadyCustomer]"
+                                            type="hidden"
+                                            value=""
+                                          /><input
+                                            class="add-on"
+                                            id="callback--alreadyCustomer"
+                                            name="tx_form_formframework[Callback-][alreadyCustomer]"
+                                            type="checkbox"
+                                            value="1"
+                                          />
+                                          <span
+                                            >I am already a customer of NFON</span
+                                          ></label
+                                        >
+                                      </div>
+                                    </div>
+                                  </div><div class="clearfix">
+                                    <p>
+                                      By sending the contact data, the data
+                                      protection declaration of NFON AG is
+                                      acknowledged: <a
+                                        href="/en/legal/data-protection"
+                                        >Data Protection</a
+                                      >.
+                                    </p>
+                                  </div><div class="field-group">
+                                    <label
+                                      class="control-label"
+                                      for="callback--friendlyCaptcha-1"
+                                      >FriendlyCaptcha</label
+                                    >
+                                    <div
+                                      class="friendlycaptcha"
+                                      data-field-name="friendlyCaptcha-1"
+                                    >
+                                      <input
+                                        id="callback--friendlyCaptcha-1"
+                                        name="tx_form_formframework[Callback-][friendlyCaptcha-1]"
+                                        type="hidden"
+                                        value="1"
+                                      />
+                                      <div
+                                        class="frc-captcha"
+                                        data-lang="en"
+                                        data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle"
+                                        data-sitekey="FCMJ11MLOUFTPJQ8"
+                                        data-attached="1"
+                                      >
+                                        <div class="frc-container">
+                                          <svg
+                                            class="frc-icon"
+                                            role="img"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            height="32"
+                                            width="32"
+                                            viewBox="0 0 24 24"
+                                            ><path
+                                              d="M17,11c0.34,0,0.67,0.04,1,0.09V6.27L10.5,3L3,6.27v4.91c0,4.54,3.2,8.79,7.5,9.82c0.55-0.13,1.08-0.32,1.6-0.55 C11.41,19.47,11,18.28,11,17C11,13.69,13.69,11,17,11z"
+                                            ></path><path
+                                              d="M17,13c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C21,14.79,19.21,13,17,13z M17,14.38"
+                                            ></path></svg
+                                          >
+                                          <div class="frc-content">
+                                            <span class="frc-text"
+                                              >Anti-Robot Verification</span
+                                            >
+                                            <button
+                                              type="button"
+                                              class="frc-button"
+                                              >Click to start verification</button
+                                            >
+                                          </div>
+                                        </div><span class="frc-banner"
+                                          ><a
+                                            href="https://friendlycaptcha.com/"
+                                            rel="noopener"
+                                            style="text-decoration:none;"
+                                            target="_blank"
+                                            ><b>Friendly</b>Captcha ⇗</a
+                                          ></span
+                                        >
+                                        <input
+                                          name="frc-captcha-solution"
+                                          class="frc-captcha-solution"
+                                          style="display: none;"
+                                          type="hidden"
+                                          value=".UNSTARTED"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div><div class="actions">
+                                    <nav class="form-navigation">
+                                      <div class="btn-toolbar" role="toolbar">
+                                        <div class="btn-group" role="group">
+                                          <input
+                                            id="currentPage-Callback-"
+                                            name="tx_form_formframework[Callback-][__currentPage]"
+                                            type="hidden"
+                                            value=""
+                                          />
+                                          <input
+                                            id="currentPage-Callback-"
+                                            name="tx_form_formframework[Callback-][__currentPage]"
+                                            type="hidden"
+                                            value="1"
+                                          /><span class="next submit"
+                                            ><button
+                                              class="button"
+                                              name=""
+                                              type="submit"
+                                              value="1">Submit</button
+                                            >
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </nav>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,123 @@
+@import "@/styles/_globals.less";
+
+.downloads {
+  &-headline {
+    margin-bottom: 64px;
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+
+    &-text {
+      > h4 {
+        font-size: 1.8rem;
+        line-height: 28px;
+        text-transform: none;
+        margin-bottom: 12px;
+        font-weight: @font-weight__bold;
+      }
+    }
+
+    &-check {
+      content: "";
+      display: inline-block;
+      background-size: contain;
+      .change-custom-color(@base__color-6__xml);
+      background-image: @check;
+      background-repeat: no-repeat;
+    }
+
+    ul {
+      li {
+        display: flex;
+
+        a {
+          color: @base__color-1;
+          word-break: break-all;
+          font-weight: @font-weight__light;
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+
+          &:hover {
+            text-decoration: underline;
+            
+            &::before {
+              top: 6px;
+            }
+          }
+
+          &::before {
+            content: "";
+            display: inline-block;
+            margin-right: 10px;
+            @size: 18px;
+            width: @size;
+            min-width: @size;
+            height: @size;
+            position: relative;
+            top: 2px;
+            transition: 0.25s ease;
+            .change-custom-color(@base__color-1__xml);
+            background-image: @download;
+            background-repeat: no-repeat;
+          }
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+// max 1024
+@media (max-width: @sizes[tablet-wide-down]) {
+  .downloads {
+    margin-bottom: -40px;
+    &-item {
+      padding-bottom: 40px;
+
+      &-check {
+        width: 20px;
+        min-width: 20px;
+        height: 16px;
+        position: relative;
+        top: 3px;
+      }
+
+      &-text {
+        margin-left: 12px;
+      }
+
+      ul {
+        li {
+          &:not(:last-child) {
+            margin-bottom: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// min 1024
+@media (min-width: @sizes[tablet-wide]) {
+  .downloads {
+    margin-bottom: -32px;
+    &-item {
+      padding: 0 12px 32px 12px;
+
+      &-check {
+        width: 32px;
+        min-width: 32px;
+        height: 22px;
+      }
+
+      &-text {
+        margin-left: 32px;
+      }
+    }
+  }
+}

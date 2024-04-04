@@ -1,0 +1,228 @@
+@import "@/styles/_globals.less";
+@import "@/styles/slider-controls.less";
+
+.quotecontainer {
+  &-wrapper {
+    margin: 0 auto;
+
+    .swiper-container {
+      position: relative;
+      overflow: hidden;
+      list-style: none;
+      padding: 4px;
+      margin: -4px;
+      z-index: 1;
+
+      .swiper-wrapper {
+        height: 293px;
+        transition-duration: 0ms;
+        transform: translate3d(0px, 0px, 0px);
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        box-sizing: content-box;
+
+        .swiper-slide {
+          flex-shrink: 0;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transition-property: transform;
+        }
+      }
+    }
+  }
+
+  &-item {
+    blockquote {
+      font-size: 2.4rem;
+      line-height: 3.4rem;
+      font-style: normal;
+      margin-bottom: 16px;
+    }
+
+    h4 {
+      font-size: 1.8rem;
+      line-height: 28px;
+      text-transform: none;
+      margin-bottom: 12px;
+      font-weight: @font-weight__bold;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+    }
+
+    &-link {
+      margin-bottom: 12px;
+    }
+
+    &-text {
+      p {
+        margin-bottom: 8px;
+      }
+    }
+
+    &-video {
+      margin: 32px 0;
+
+      video {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &-icon {
+      &::before {
+        content: "";
+        display: block;
+        width: 85px;
+        min-width: 85px;
+        height: 85px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        .change-custom-color(@base__color-6__xml);
+        background-image: @quote;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .swiper-pagination-fraction {
+    color: @base__color-1;
+
+    span {
+      color: @base__color-1;
+    }
+  }
+
+  .slider-controls {
+    display: flex;
+    align-items: center;
+  }
+
+  .slider-button-prev,
+  .slider-button-next {
+    border: 1px solid @base__color-1;
+
+    &::after {
+      .change-custom-color(@base__color-1__xml);
+      background-image: @chevron;
+    }
+    &.swiper-button-disabled {
+      opacity: 0.4;
+    }
+    &:not(.swiper-button-disabled) {
+      &:focus-visible {
+        &::before {
+          .change-custom-color(@base__color-1__xml);
+          background-image: @focus-outline;
+        }
+
+        &::after {
+          .change-custom-color(@base__color-1__xml);
+          background-image: @chevron;
+        }
+      }
+
+      &:hover {
+        background-color: @base-hover__color-4;
+        border-color: @base__color-4;
+      }
+    }
+  }
+}
+
+// max 1024
+@media (max-width: @sizes[tablet-wide-down]) {
+  .quotecontainer {
+    &-item {
+      p {
+        // .lib-font-size(20);
+        // .lib-line-height(26);
+      }
+
+      &-icon {
+        margin-bottom: 24px;
+      }
+
+      &-text {
+        margin-bottom: 32px;
+
+        p {
+          margin-bottom: 16px;
+        }
+      }
+    }
+
+    .slider-controls {
+      justify-content: end;
+      margin-top: 24px;
+    }
+  }
+}
+
+// min 1024
+@media (min-width: @sizes[tablet-wide]) {
+  .quotecontainer {
+    &-wrapper {
+      width: 780px;
+    }
+
+    &-item {
+      p {
+        // .lib-font-size(30);
+        // .lib-line-height(41);
+      }
+
+      &-inner {
+        display: flex;
+        flex-direction: row;
+      }
+
+      &-link {
+        margin-top: 62px;
+      }
+
+      &-intro {
+        text-align: center;
+      }
+
+      &-content {
+        margin-left: 48px;
+      }
+    }
+
+    .slider-controls {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 10;
+      padding-left: 30px;
+
+      &.hidden {
+        display: none;
+      }
+    }
+
+    .slider-button-next,
+    .slider-button-prev {
+      &:not(.swiper-button-disabled) {
+        &:hover,
+        &:active {
+          &::after {
+            .change-custom-color(@base__color-1__xml);
+            background-image: @chevron;
+          }
+        }
+      }
+    }
+  }
+}

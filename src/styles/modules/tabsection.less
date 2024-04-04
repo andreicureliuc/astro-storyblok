@@ -1,0 +1,481 @@
+@import "@/styles/_globals.less";
+
+.tabber.section-container {
+  padding: 0;
+  scroll-margin-top: 66px;
+
+  .textteaser {
+    .content-container {
+      .textteaser-inner {
+        .textteaser-intro {
+          margin-bottom: 24px;
+          width: 80%;
+          
+          h3 {
+            font-size: 2.4rem;
+            line-height: 34px;
+            text-transform: none;
+            margin-bottom: 16px;
+            font-weight: @font-weight__bold;
+            max-width: 941px;
+          }
+
+          p {
+            max-width: 941px;
+            font-size: 1.7rem;
+            line-height: 2.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tabber-headline:empty {
+  display: none;
+}
+
+.tabber-headline h1,
+.tabber-headline h2,
+.tabber-headline h3,
+.tabber-headline h4 {
+  color: #fff;
+}
+
+.tabber-head,
+.tabber-headline,
+.tabber-outer {
+  background: #000;
+}
+
+.tabber-head ul li {
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+  transition: 0.15s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tabber-head ul li .icon {
+  margin-right: 10px;
+  max-width: 25px;
+  max-height: 25px;
+}
+
+.tabber-head ul li .icon svg,
+.tabber-head ul li .icon svg circle,
+.tabber-head ul li .icon svg g,
+.tabber-head ul li .icon svg path,
+.tabber-head ul li .icon svg polygon {
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+}
+
+.tabber-head ul li.active {
+  color: #000;
+  background-color: #00ff91;
+}
+
+.tabber-head ul li.active .icon svg,
+.tabber-head ul li.active .icon svg circle,
+.tabber-head ul li.active .icon svg g,
+.tabber-head ul li.active .icon svg path,
+.tabber-head ul li.active .icon svg polygon {
+  fill: #000;
+}
+
+.tabber-content-item {
+  display: none;
+}
+
+.tabber-content-item.active {
+  display: block;
+}
+
+.tabber-content-item table.contenttable {
+  border-collapse: collapse;
+}
+
+.tabber-content-item table.contenttable tr:first-child td {
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  font-weight: 700;
+  border-top: none;
+}
+
+.tabber-content-item table.contenttable tr td {
+  padding: 24px 0 24px 16px;
+}
+
+.tabber-content-item table.contenttable tr td.color-1,
+.tabber-content-item table.contenttable tr td.color-2,
+.tabber-content-item table.contenttable tr td.color-3 {
+  border: 0 solid #8e8e8f;
+}
+
+.tabber-content-item table.contenttable tr td:first-child,
+.tabber-content-item table.contenttable tr td:nth-child(2) {
+  border-left: 0 solid transparent;
+  border-right: 0 solid transparent;
+}
+
+.tabber-content-item table.contenttable tr.color-1 td {
+  background: #f3f6f8;
+  font-weight: 700;
+}
+
+.tabber-content-item table.contenttable tr.color-3 {
+  background: #000;
+  color: #fff;
+}
+
+.tabber-content-item table.contenttable + p,
+.tabber-content-item table.contenttable + p + p,
+.tabber-content-item table.contenttable + p + p + p {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+
+@media (max-width: 767px) {
+  .tabber-content-mobile {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .tabber-content-mobile:after {
+    right: 22px;
+  }
+
+  .tabber-content-item {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .tabber {
+    padding-bottom: 56px;
+    background-color: #00ff91;
+  }
+
+  .tabber-outer .col {
+    padding: 0;
+  }
+
+  .tabber-headline {
+    padding: 56px 16px 0;
+    margin-bottom: 70px;
+  }
+
+  .tabber-headline h2,
+  .tabber-headline h3,
+  .tabber-headline h4 {
+    margin: 0;
+  }
+
+  .tabber-wrapper {
+    margin-bottom: 56px;
+    margin-top: 40px;
+  }
+
+  .tabber-head,
+  .tabber-wrapper {
+    display: none;
+  }
+
+  .tabber-lower {
+    background-color: #000;
+  }
+
+  .tabber-content {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  .tabber-content-item.active {
+    background-color: #fff;
+  }
+
+  .tabber-content-item .contenttable {
+    margin-top: 32px;
+  }
+
+  .tabber-content-mobile {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+  }
+
+  .tabber-content-mobile span {
+    max-width: calc(100% - 30px);
+  }
+
+  .tabber-content-mobile:after {
+    content: "";
+    display: inline-block;
+    top: 28px;
+    width: 12px;
+    min-width: 12px;
+    height: 8px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='8' height='5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.865.195L4.003 3.057 1.14.195l-.943.943 3.805 3.805 3.805-3.805-.943-.943z' fill='%23fff'/%3E%3C/svg%3E");
+    transition: 0.25s ease;
+    transform-origin: 50% 50%;
+  }
+
+  .tabber-content-mobile.active {
+    border-bottom: 1px solid #fff;
+    background-color: #00ff91;
+    color: #000;
+  }
+
+  .tabber-content-mobile.active:after {
+    transform: scaleY(-1);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='8' height='5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.865.195L4.003 3.057 1.14.195l-.943.943 3.805 3.805 3.805-3.805-.943-.943z' fill='%23000'/%3E%3C/svg%3E");
+  }
+
+  .tabber-content-item > .section-container.contentrow {
+    padding: 0;
+  }
+
+  .tabber-content-item
+    > .section-container.contentrow
+    .content-container
+    .iconcontainer {
+    padding-top: 40px;
+  }
+
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h2,
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h3,
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h4,
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h5 {
+    margin-top: 80px;
+  }
+
+  .tabber-content-item > .section-container.contentrow .servicetable {
+    padding-top: 40px;
+  }
+
+  .tabber-content-item
+    .section-container
+    > .site-content
+    > .flex-col
+    > .col.xs-12
+    > .flex-col {
+    margin: 0 auto;
+  }
+
+  .tabber-content-item .contentrow .textteaser {
+    padding: 0 0 56px;
+  }
+
+  .tabber-content-item .iconcontainer-content > .flex-col,
+  .tabber-content-item .textteaser .swiper-wrapper {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .tabber-content-item .site-content > .content-size-sl > .flex-col {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+}
+
+@media (min-width: 768px) and(max-width: 1023px) {
+  .tabber-content {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+
+  .tabber-content-mobile {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .tabber-content-mobile:after {
+    right: 30px;
+  }
+
+  .tabber-content-item {
+    padding: 24px 0;
+  }
+
+  .tabber-content-item .site-content > .content-size-sl > .flex-col {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .tabber-content-item .textteaser .swiper-wrapper {
+    margin: 0 -16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tabber-outer {
+    padding-top: 56px;
+  }
+
+  .tabber-headline {
+    width: 75%;
+  }
+
+  .tabber-headline:not(:empty) {
+    margin-bottom: 70px;
+  }
+
+  .tabber-head ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .tabber-head ul li {
+    padding: 20px;
+  }
+
+  .tabber-head ul li:before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-color: #00ff91;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    z-index: 20;
+    transform: translateX(-50%) rotate(45deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .tabber-head ul li.active:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .tabber-head ul li:hover {
+    color: #000;
+    background-color: #00ff91;
+  }
+
+  .tabber-head ul li:hover .icon svg,
+  .tabber-head ul li:hover .icon svg circle,
+  .tabber-head ul li:hover .icon svg g,
+  .tabber-head ul li:hover .icon svg path,
+  .tabber-head ul li:hover .icon svg polygon {
+    fill: #000;
+  }
+
+  .tabber-content-item {
+    padding-bottom: 80px;
+  }
+
+  .tabber-content-mobile {
+    display: none;
+  }
+
+  .tabber-content-item .section-container {
+    padding: 80px 0 0;
+  }
+
+  .tabber-content-item .content-container > .text-only {
+    padding-top: 80px;
+  }
+
+  .tabber-content-item .news-list-view {
+    padding-top: 56px;
+  }
+
+  .tabber-content-item > .section-container.contentrow {
+    padding: 0;
+  }
+
+  .tabber-content-item
+    > .section-container.contentrow
+    .align-center
+    .content-container,
+  .tabber-content-item
+    > .section-container.contentrow
+    .content-container
+    .iconcontainer,
+  .tabber-content-item > .section-container.contentrow .servicetable {
+    padding-top: 80px;
+  }
+
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h2,
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h3,
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h4,
+  .tabber-content-item > .section-container.contentrow .flex-col.headline h5 {
+    margin-top: 80px;
+  }
+
+  .tabber-content-item > .section-container.contentrow .textimage {
+    padding-top: 80px;
+  }
+
+  .tabber-content-item
+    > .section-container.contentrow
+    .content-container
+    > .textimage {
+    padding: 80px 0;
+  }
+
+  .tabber-content-item > .section-container.contentrow .textteaser {
+    padding: 80px 0 0;
+  }
+
+  .tabber-content-item
+    > .section-container.contentrow
+    .textteaser-item.l-4:nth-child(n + 4),
+  .tabber-content-item
+    > .section-container.contentrow
+    .textteaser-item.l-6:nth-child(n + 3) {
+    margin-top: 40px;
+  }
+
+  .tabber-content-item
+    .section-container
+    .site-content
+    > .flex-col
+    > .col.xs-12,
+  .tabber-content-item
+    .section-container
+    .site-content
+    > .flex-col
+    > .col.xs-12
+    .flex-col:nth-child(2)
+    > .col,
+  .tabber-content-item
+    .section-container
+    .textteaser
+    .content-size-sl
+    > .flex-col
+    > .col.xs-12,
+  .tabber-content-item
+    .section-container
+    > .main-content
+    > .flex-col
+    > .col.xs-12 {
+    padding: 0;
+  }
+}

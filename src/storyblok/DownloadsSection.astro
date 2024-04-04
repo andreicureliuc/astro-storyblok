@@ -1,0 +1,30 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<section class="section-container background-0" {...storyblokEditable(blok)}>
+  <div class="container">
+    <div class="flex-col">
+      <div class="col xs-12">
+        <div class="downloads">
+          <div class="downloads-headline">
+            <h2>{blok.headline}</h2>
+          </div>
+
+          <div class="downloads-content">
+            <div class="flex flex-wrap">
+              {
+                blok.download_items?.map((item) => {
+                  return <StoryblokComponent blok={item} />;
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

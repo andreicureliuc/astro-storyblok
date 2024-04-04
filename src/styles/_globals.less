@@ -1,0 +1,231 @@
+@import "_variables.less";
+@import "_icons.less";
+@import "_mixins.less";
+
+*,
+&:before,
+&:after {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Pangram Sans, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
+    sans-serif;
+  height: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+button,
+.button {
+  background: #00ff91;
+  border: 1px solid #00ff91;
+  color: #000;
+  border-radius: 0;
+  padding: 11px 28px;
+  display: inline-block;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 700;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1220px !important;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.teaser-section {
+  padding: 80px 0 0;
+}
+
+/***** Typography *****/
+
+@media (min-width: 320px) {
+  .headline-h1,
+  .headline-h2,
+  .headline-h3,
+  .headline-h4,
+  .headline-h5,
+  .headline-h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Pangram Sans, -apple-system, BlinkMacSystemFont, Helvetica,
+      Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 1219px) {
+  .headline-h1,
+  h1 {
+    font-size: 3rem;
+    line-height: 36px;
+    text-transform: none;
+    margin-bottom: 8px;
+  }
+
+  .headline-h2,
+  h2 {
+    font-size: 2.6rem;
+    line-height: 31px;
+  }
+
+  .headline-h2,
+  .headline-h3,
+  h2,
+  h3 {
+    text-transform: none;
+    margin-bottom: 16px;
+  }
+
+  .headline-h3,
+  h3 {
+    font-size: 2.2rem;
+    line-height: 26px;
+  }
+
+  .headline-h4,
+  .headline-h5,
+  .headline-h6,
+  h4,
+  h5,
+  h6 {
+    font-size: 1.8rem;
+    line-height: 26px;
+    text-transform: none;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1220px) {
+  .headline-h1,
+  h1 {
+    font-size: 3.8rem;
+    line-height: 44px;
+  }
+
+  .headline-h1,
+  .headline-h2,
+  h1,
+  h2 {
+    text-transform: none;
+    margin-bottom: 16px;
+  }
+
+  .headline-h2,
+  h2 {
+    font-size: 3.2rem;
+    line-height: 41px;
+  }
+
+  .headline-h3,
+  h3 {
+    font-size: 2.4rem;
+    line-height: 34px;
+    text-transform: none;
+    margin-bottom: 16px;
+  }
+
+  .headline-h4,
+  .headline-h5,
+  .headline-h6,
+  h4,
+  h5,
+  h6 {
+    font-size: 1.8rem;
+    line-height: 28px;
+    text-transform: none;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1219px) {
+  body,
+  body p a {
+    font-size: 1.7rem;
+    line-height: 2.4rem;
+  }
+}
+
+/***** Container *****/
+
+.content-size-xs {
+  max-width: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-size-s {
+  max-width: 320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-size-sm {
+  max-width: 640px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-size-m {
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-size-sl {
+  max-width: 1220px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-size-l {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-size-xl {
+  max-width: 1640px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-size-xxl {
+  max-width: 1920px;
+  margin: 0 auto;
+  width: 100%;
+}

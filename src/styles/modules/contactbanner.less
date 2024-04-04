@@ -1,0 +1,258 @@
+@import "@/styles/_globals.less";
+
+.contactbanner {
+  overflow: hidden;
+
+  &-no-padding {
+    &.section-container {
+      background-color: @base__color-1;
+      padding: 0;
+    }
+  }
+
+  &-small {
+    padding: 0;
+
+    &.background-3 {
+      &::before {
+        content: "";
+        .change-custom-color(@base__color-1__xml);
+        background-image: @stripes-big;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+      }
+    }
+
+    .contactbanner-item {
+      padding: 48px 0;
+    }
+
+    > div {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  &:not(.contactbanner-small) {
+    .contactbanner-item {
+      &.contactbanner-item-left {
+        h2,
+        h3,
+        h4 {
+          color: @base__color-2;
+        }
+      }
+    }
+  }
+
+  &-item {
+    min-height: 282px;
+    padding: 48px 0;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    &-overline {
+      margin-bottom: 16px !important;
+    }
+
+    &-outer {
+      .contactbanner-item-button {
+        margin-top: 0;
+      }
+    }
+
+    &-button {
+      margin-top: 32px;
+
+      a {
+        &:focus-visible {
+          &::before {
+            .change-custom-color(@base__color-2__xml);
+            background-image: @focus-outline !important;
+          }
+        }
+      }
+    }
+
+    &.contactbanner-item-left {
+      h2,
+      h3,
+      h4,
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    &-blue {
+      background-color: @base__color-3;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300%;
+        height: 100%;
+        margin-top: 0;
+        background-color: @base__color-3;
+        transform: translateX(33.333%);
+      }
+
+      ul {
+        li {
+          color: @base__color-2;
+        }
+      }
+    }
+
+    h2 {
+      margin-bottom: 32px;
+      width: 100%;
+      max-width: 400px;
+      font-size: 3.2rem;
+      line-height: 41px;
+      font-weight: @font-weight__bold;
+    }
+
+    ul {
+      li {
+        font-weight: @font-weight__bold;
+        .flex();
+        flex-direction: row;
+        align-items: center;
+        &::before {
+          content: "";
+          width: 32px;
+          height: 32px;
+          min-width: 32px;
+          margin-right: 16px;
+          display: inline-block;
+          background-size: contain;
+          .change-custom-color(@base__color-4__xml);
+          background-image: @icon-checkmark;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    p {
+      margin-top: 16px;
+      padding: 0;
+    }
+  }
+
+  &-icon {
+    display: inline-block;
+    margin-bottom: 37px;
+    svg,
+    g,
+    path,
+    rect,
+    circle,
+    polygon,
+    line,
+    polyline,
+    text {
+      &[stroke] {
+        stroke: @base__color-3;
+      }
+    }
+  }
+
+  h2 a {
+    color: @base__color-1;
+  }
+}
+
+// max 1024
+@media (max-width: @sizes[tablet-wide-down]) {
+  .contactbanner {
+    &-small {
+      &.background-3 {
+        &::before {
+          background-position: 0% 52%;
+          background-size: auto 180%;
+        }
+      }
+
+      .contactbanner-item {
+        &.contactbanner-item-left {
+          padding-bottom: 32px;
+        }
+      }
+
+      .contactbanner-item-outer {
+        background-color: transparent;
+
+        .contactbanner-item {
+          padding-top: 0;
+        }
+      }
+    }
+
+    &-item {
+      &-outer {
+        background-color: @base__color-3;
+      }
+    }
+
+    &-alignment {
+      justify-content: left;
+      text-align: left;
+
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// min 1024
+@media (min-width: @sizes[tablet-wide]) {
+  .contactbanner {
+    &-small {
+      &.background-3 {
+        &::before {
+          content: "";
+          background-size: 156%;
+          background-position: 130px 52%;
+        }
+      }
+
+      .contactbanner-item {
+        min-height: 282px;
+      }
+    }
+
+    &-item {
+      &-outer {
+        .contactbanner-item-button {
+          align-self: center;
+          margin-left: -12px;
+        }
+      }
+
+      &-left {
+        padding-right: 120px;
+      }
+
+      &-blue {
+        padding-left: 120px;
+      }
+    }
+
+    &-alignment {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

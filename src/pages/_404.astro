@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import parseUrl from '@/utils/parseUrl'
+import { isPreview } from '@/utils'
+ 
+const params = Astro.params
+
+let props = isPreview() ? parseUrl(params?.slug) : Astro.props
+
+const { language, langSwitch } = props
+---
+
+<BaseLayout langSwitch={langSwitch} language={language}>
+  <h1>Page not found</h1>
+
+  <p>
+    Try taking a look at my <a href="/blog">blog articles</a> instead, or go to the
+    <a href="/">home page</a>.
+  </p>
+</BaseLayout>

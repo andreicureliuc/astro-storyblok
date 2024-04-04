@@ -1,0 +1,16 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="container mx-auto py-20" {...storyblokEditable(blok)}>
+  <h1 class="text-3xl font-bold">{blok.name}</h1>
+  
+  {
+    blok.elements?.map((blok) => {
+      return <StoryblokComponent blok={blok} />;
+    })
+  }
+</div>

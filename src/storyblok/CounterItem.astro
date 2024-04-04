@@ -1,0 +1,16 @@
+---
+import "@/styles/modules/counteritem.less";
+
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="countermodule-item" {...storyblokEditable(blok)}>
+  <p>{blok.text}</p>
+  <span
+    class="counter-obj"
+    data-counter-presign='&percnt;'
+    data-counter-value={blok.count_number}>0</span
+  >
+</div>

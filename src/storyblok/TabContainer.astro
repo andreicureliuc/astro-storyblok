@@ -1,0 +1,34 @@
+---
+import "@/styles/modules/tabcontainer.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="container" {...storyblokEditable(blok)}>
+  <div class="teaser-section">
+    <div class="flex-col">
+      <div class="col xs-12">
+        <div class="tabcontainer">
+          <div class="tabcontainer-headline">
+            <h2>{blok.headline}</h2>
+          </div>
+          <div class="tabcontainer-content">
+            <ul class="tabcontainer-block-wrapper">
+              {
+                blok?.tabs?.map((tabElement, index) => (
+                  <StoryblokComponent blok={tabElement} key={index} />
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import "@/scripts/modules/tabcontainer.js";
+</script>

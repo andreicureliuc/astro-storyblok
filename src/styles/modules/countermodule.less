@@ -1,0 +1,116 @@
+@import "@/styles/_globals.less";
+
+.countermodule {
+  width: 100%;
+  padding: 80px 0;
+
+  &-content {
+    .col {
+      &:not(:first-child) {
+        .countermodule-item {
+          position: relative;
+          border: 1px solid #8e8e8f;
+
+          span,
+          p {
+            color: @base__color-1;
+            font-size: 1.7rem;
+            line-height: 2.7rem;
+            font-weight: 400;
+          }
+
+          span {
+            font-size: 4.2rem;
+            line-height: 4.8rem;
+            font-weight: @font-weight__bold;
+            letter-spacing: -1.5px;
+            display: inline-block;
+            margin-top: 24px;
+            color: @base__color-1;
+          }
+        }
+      }
+
+      &:first-child {
+        .countermodule-item {
+          background-color: @base__color-3;
+        }
+      }
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 24px;
+    min-height: 180px;
+
+    p {
+      font-family: @font-family__medium;
+      font-weight: @font-weight__bold;
+    }
+
+    span,
+    p {
+      color: @base__color-2;
+      font-size: 1.7rem;
+      line-height: 2.7rem;
+      font-weight: 400;
+    }
+
+    span {
+      font-size: 4.2rem;
+      line-height: 4.8rem;
+      font-weight: @font-weight__bold;
+      letter-spacing: -1.5px;
+      display: inline-block;
+      margin-top: 24px;
+    }
+  }
+}
+
+// max 1024
+@media (max-width: @sizes[tablet-wide-down]) {
+  .countermodule {
+    &-headline {
+      margin-bottom: 24px;
+      font-size: 3.2rem;
+      line-height: 41px;
+      font-weight: 700;
+    }
+
+    &-item {
+      margin-bottom: 24px;
+    }
+
+    &-content {
+      > .flex-col {
+        > .col:not(:last-child) {
+          margin-bottom: 32px;
+        }
+      }
+    }
+  }
+}
+
+// min 1024
+@media (min-width: @sizes[tablet-wide]) {
+  .countermodule {
+    &-headline {
+      margin-bottom: 64px;
+      font-size: 3.2rem;
+      line-height: 41px;
+      font-weight: 700;
+    }
+
+    &-content {
+      .col {
+        &:nth-child(n + 4) {
+          margin-top: 48px;
+        }
+      }
+    }
+  }
+}

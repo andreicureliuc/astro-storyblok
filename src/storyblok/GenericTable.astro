@@ -1,0 +1,30 @@
+---
+const { blok } = Astro.props;
+
+const table = blok.table;
+---
+
+<table class="mt-4 w-full text-left">
+  <thead>
+    <tr class="border-b">
+      {
+        table?.thead.map((th) => {
+          return <th class="text-left">{th.value}</th>;
+        })
+      }
+    </tr>
+  </thead>
+  <tbody class="text-sm">
+    {
+      table?.tbody.map((tr) => {
+        return (
+          <tr class="border-b">
+            {tr.body.map((td) => {
+              return <td class="text-left py-1">{td.value}asdsads</td>;
+            })}
+          </tr>
+        );
+      })
+    }
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="container mx-auto py-20" {...storyblokEditable(blok)}>
+  <RichTextRenderer
+    content={blok.longtext}
+    resolver={(blok) => {
+      return {
+        component: StoryblokComponent,
+        props: { blok },
+      };
+    }}
+    {...storyblokEditable(blok)}
+  />
+
+  <img src={blok.icon.filename} alt={blok.icon.alt} />
+</div>

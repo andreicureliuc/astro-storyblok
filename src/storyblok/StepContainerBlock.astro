@@ -1,0 +1,31 @@
+---
+import "@/styles/modules/stepcontainer.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+
+const { blok, key } = Astro.props;
+---
+
+<div
+  class={`stepcontainer-block ${key === 0 ? "first" : ""}`}
+  data-step-block={key}
+>
+  <div class="stepcontainer-block-head" {...storyblokEditable(blok)}>
+    <h4>{blok.title}</h4>
+  </div>
+  <div class="stepcontainer-block-content">
+    <div class="stepcontainer-block-content-inner">
+      <RichTextRenderer
+        content={blok.content}
+        resolver={(blok) => {
+          return {
+            component: StoryblokComponent,
+            props: { blok },
+          };
+        }}
+        {...storyblokEditable(blok)}
+      />
+    </div>
+  </div>
+</div>

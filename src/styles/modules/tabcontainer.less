@@ -1,0 +1,102 @@
+@import "@/styles/_globals.less";
+
+.tabcontainer {
+  &-headline {
+    margin-bottom: 40px;
+    font-size: 3.2rem;
+    line-height: 41px;
+    font-weight: @font-weight__bold;
+  }
+
+  &-block {
+    box-shadow: inset 0px -1px 0px @base__color-7;
+
+    &-head {
+      position: relative;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 33px;
+        right: 19px;
+        width: 18px;
+        min-width: 18px;
+        height: 18px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        .change-custom-color(@base__color-1__xml);
+        background-image: @arrow-down;
+        transition: 0.25s ease;
+        transform-origin: 50% 50%;
+      }
+
+      h4 {
+        margin: 0;
+        font-size: 1.8rem;
+        line-height: 28px;
+        font-weight: 700;
+      }
+    }
+
+    &.active {
+      .tabcontainer-block-head {
+        &::after {
+          content: "";
+          .change-custom-color(@base__color-6__xml);
+          background-image: @arrow-down;
+          transform: scaleY(-1);
+          top: 27px;
+        }
+      }
+    }
+
+    &-content {
+      max-height: 0;
+      transition: max-height 0.25s ease-in-out 0s;
+      overflow: hidden;
+
+      &-inner {
+        padding: 0 16px 24px 16px;
+      }
+
+      .button-row {
+        margin-top: 20px;
+
+        a {
+          margin-bottom: 0;
+        }
+      }
+
+      p {
+        padding: 0 0 24px;
+        font-size: 1.7rem;
+        line-height: 2.7rem;
+        max-width: 941px;
+      }
+    }
+  }
+}
+
+// max 768
+@media (max-width: @sizes[tablet-down]) {
+  .tabcontainer {
+    &-block {
+      &-head {
+        padding: 24px 46px 24px 16px;
+      }
+    }
+  }
+}
+
+// min 768
+@media (min-width: @sizes[tablet]) {
+  .tabcontainer {
+    &-block {
+      &-head {
+        padding: 24px 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+@import "@/styles/_globals.less";
+
+.contactbanner {
+  overflow: hidden;
+
+  &-no-padding {
+    &.section-container {
+      padding: 0;
+    }
+  }
+
+  &-item {
+    padding: 80px 0 100px 0;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    &-button {
+      margin-top: 32px;
+    }
+
+    &.contactbanner-item-left {
+      h2 {
+        margin-bottom: 5px;
+      }
+    }
+
+    &-blue {
+      background-color: @base__color-3;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0px;
+        width: 300%;
+        height: 100%;
+        margin-top: 0;
+        background-color: @base__color-3;
+        transform: translateX(33.333%);
+      }
+
+      ul {
+        li {
+          color: @base__color-2;
+        }
+      }
+    }
+
+    h2 {
+      margin-bottom: 32px;
+    }
+
+    ul {
+      li {
+        font-weight: @font-weight__light;
+
+        &::before {
+          content: "";
+          margin-right: 20px;
+          display: inline-block;
+          background-size: contain;
+          .change-custom-color(@base__color-4__xml);
+          background-image: @check-thin;
+          background-repeat: no-repeat;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+
+  &-icon {
+    display: inline-block;
+    margin-bottom: 37px;
+  }
+
+  h2 a {
+    color: @base__color-1;
+  }
+}
+
+// max 1024
+@media (max-width: @sizes[tablet-wide-down]) {
+  .contactbanner {
+    &-item {
+      &-outer {
+        background-color: @base__color-4;
+      }
+
+      ul {
+        li {
+          font-size: 2.4rem;
+          line-height: 3.4rem;
+          font-weight: @font-weight__bold;
+
+          &::before {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+          }
+        }
+      }
+    }
+
+    &-alignment {
+      justify-content: left;
+      text-align: left;
+
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// min 1024
+@media (min-width: @sizes[tablet-wide]) {
+  .contactbanner {
+    &-item {
+      ul {
+        li {
+          font-size: 2.4rem;
+          line-height: 3.4rem;
+          font-weight: @font-weight__bold;
+
+          &::before {
+            width: 27px;
+            height: 27px;
+            min-width: 27px;
+          }
+        }
+      }
+
+      &-left {
+        padding-right: 120px;
+      }
+
+      &-blue {
+        padding-left: 120px;
+      }
+    }
+
+    &-alignment {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

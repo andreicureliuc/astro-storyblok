@@ -1,0 +1,25 @@
+---
+import "@/styles/modules/pressreleasecard.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="press-release-card" {...storyblokEditable(blok)}>
+  <h4>
+    {blok.title}
+  </h4>
+  {
+    blok?.link?.story && (
+      <a
+        href={blok?.link?.story ? blok.link.story.full_slug : "#"}
+        class="button type-1"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {blok.link_text ? blok.link_text : "Read more"}
+      </a>
+    )
+  }
+</div>

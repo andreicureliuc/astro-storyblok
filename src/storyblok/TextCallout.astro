@@ -1,0 +1,47 @@
+---
+import "@/styles/modules/textcallout.less";
+import { storyblokEditable } from "@storyblok/astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+
+const { blok } = Astro.props;
+---
+
+<section
+  class="section-container"
+  style={{ background: blok.background_color === "light" ? "#f3f6f8" : "#000" }}
+  {...storyblokEditable(blok)}
+>
+  <div class="container site-content">
+    <div class="flex">
+      <div class="w-12/12 content-container">
+        <div class="align-left">
+          <h2 style={{ color: blok.text_color === "black" ? "#000" : "#fff" }}>
+            {blok.headline}
+          </h2>
+          <div class="text-only">
+            <RichTextRenderer
+              content={blok.content}
+              {...storyblokEditable(blok)}
+              style={{ color: blok.text_color === "black" ? "#000" : "#fff" }}
+            />
+          </div><div class="button-row">
+            <div>
+              {
+                blok?.link?.story && (
+                  <a
+                    href={blok?.link?.story ? blok.link.story.full_slug : "#"}
+                    class="button type-1"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {blok.link_text ? blok.link_text : "Start now"}
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

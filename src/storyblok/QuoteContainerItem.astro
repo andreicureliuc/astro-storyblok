@@ -1,0 +1,45 @@
+---
+import "@/styles/modules/quotecontainer.less";
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="swiper-slide quotecontainer-item" {...storyblokEditable(blok)}>
+  <div class="quotecontainer-item-intro"></div>
+  <div class="quotecontainer-item-inner">
+    <div class="quotecontainer-item-icon"></div>
+    <div class="quotecontainer-item-content">
+      <div class="quotecontainer-item-text">
+        <blockquote>
+          <RichTextRenderer
+            content={blok.quoted_text}
+            resolver={(blok) => {
+              return {
+                component: StoryblokComponent,
+                props: { blok },
+              };
+            }}
+            {...storyblokEditable(blok)}
+          />
+        </blockquote>
+        <h4>{blok.quoted_by}</h4>
+      </div>
+      <div class="quotecontainer-item-link">
+        {
+          blok?.link?.story && (
+            <a
+              href={blok.link.story.full_slug}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {blok.link_text ? blok.link_text : "Full story"}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>

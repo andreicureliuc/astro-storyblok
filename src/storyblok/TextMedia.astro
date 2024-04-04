@@ -1,0 +1,29 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRenderer.astro";
+const { blok } = Astro.props;
+---
+
+<div class="container mx-auto py-20" {...storyblokEditable(blok)}>
+  <h1 class="text-3xl font-bold">{blok.name}</h1>
+  <h1 class="text-3xl font-bold">{blok.headline}</h1>
+  <RichTextRenderer
+    content={blok.longcopy}
+    resolver={(blok) => {
+      return {
+        component: StoryblokComponent,
+        props: { blok },
+      };
+    }}
+    {...storyblokEditable(blok)}
+  />
+  <img src={blok.media.filename} alt={blok.media.alt} />
+  <div class=`grid md:grid-cols-${blok.cols} gap-4 my-12 place-items-center`>
+    {
+      blok.link?.map((blok) => {
+        return <StoryblokComponent blok={blok} />;
+      })
+    }
+  </div>
+</div>

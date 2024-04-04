@@ -1,0 +1,163 @@
+.logocontainer {
+  padding: 80px 0;
+}
+.logocontainer-headline {
+  text-align: center;
+  font-size: 3.2rem;
+  line-height: 41px;
+  font-weight: 700;
+
+  h2 {
+    margin: 0 auto 16px auto;
+  }
+}
+
+.logocontainer-headline:not(:empty) {
+  margin-bottom: 48px;
+}
+
+.logocontainer-static .logocontainer-content-item {
+  margin-bottom: 56px;
+}
+
+.logocontainer-content-item.col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logocontainer-inner {
+  margin: 0 auto;
+}
+
+.logocontainer-inner-large {
+  max-width: none;
+  width: 100%;
+}
+
+.logocontainer-inner .swiper-wrapper {
+  align-items: center;
+}
+
+.logocontainer-inner .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+}
+
+.logocontainer-inner .swiper-slide img {
+  width: auto;
+  max-height: 100%;
+}
+
+.logocontainer .swiper-wrapper {
+  transition-timing-function: linear;
+}
+
+@media (max-width: 1023px) {
+  .logocontainer-item {
+    height: 55px;
+  }
+
+  .logocontainer-content-item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logocontainer-item {
+    height: 60px;
+  }
+
+  .logocontainer-content-item {
+    width: 20%;
+  }
+
+  .logocontainer-content-item.col {
+    padding: 0 24px;
+  }
+}
+
+.slider-item-text {
+  margin-top: 16px;
+  margin-bottom: -8px;
+}
+
+.slider-item-text h4 {
+  margin-bottom: 8px;
+}
+
+.slider-item-image {
+  position: relative;
+}
+
+.slider-item-image:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #00ff91;
+}
+
+.slider .slider-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .slider-intro {
+    margin-bottom: 48px;
+  }
+
+  .slider-content {
+    margin-bottom: 53px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .slider-intro {
+    margin-bottom: 59px;
+  }
+
+  .slider-content {
+    margin-bottom: 80px;
+  }
+}
+
+.logos-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.logos-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  animation: slide 30s linear infinite;
+}
+
+.logos-slider-container img {
+  width: 100px;
+  max-width: 100px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.card {
+  margin: 0 auto;
+}

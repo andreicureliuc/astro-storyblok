@@ -1,0 +1,43 @@
+---
+import "@/styles/modules/logocontainer.less";
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+let logos = blok.logos;
+---
+
+<section class="section-container logocontainer background-0" {...storyblokEditable(blok)}>
+  <div class="content-size-xxl">
+    <div class="flex-col">
+      <div
+        class="xs-12 content-size-sl logocontainer-inner logocontainer-inner-large"
+      >
+        <div class="logocontainer-inner">
+          <div class="logocontainer-headline">
+            <h2>{blok.Headline}</h2>
+          </div> 
+
+          <div class="card">
+            <div class="logos-slider">
+              <div class="logos-slider-container">
+                {
+                  logos?.map((logo) => {
+                    return <img src={logo.filename} />;
+                  })
+                }
+              </div>
+
+              <div class="logos-slider-container">
+                {
+                  logos?.map((logo) => {
+                    return <img src={logo.filename} alt ="" />;
+                  }) 
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

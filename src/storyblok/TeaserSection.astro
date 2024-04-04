@@ -1,0 +1,47 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<div class="container" {...storyblokEditable(blok)}>
+  <div class="teaser-section">
+    <h1 class="teaser-section-headline">{blok.headline}</h1>
+    <div class=`grid md:grid-cols-${blok.cols} gap-[48px] my-12`>
+      {
+        blok.cards?.map((blok) => {
+          return <StoryblokComponent blok={blok} />;
+        })
+      }
+    </div>
+
+    {
+      blok?.link?.story && (
+        <a href={blok.link.story.full_slug} class="teaser-section-link">
+          {blok.link_text?blok.link_text:"Read more"}
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style scoped lang="scss">
+  .teaser-section-headline {
+    font-size: 3.2rem;
+    line-height: 41px;
+    font-weight: 700;
+  }
+
+  .teaser-section-link {
+    background: #00ff91;
+    border: 1px solid #00ff91;
+    color: #000;
+    border-radius: 0;
+    padding: 11px 28px;
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    font-weight: 700;
+  }
+</style>
