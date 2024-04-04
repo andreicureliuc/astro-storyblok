@@ -12,6 +12,12 @@ export async function getStaticPaths() {
 
 const { slug, language, langSwitch } = Astro.props;
 
+console.log({
+  slug,
+  language,
+  langSwitch
+});
+
 const storyblokApi = useStoryblokApi();
 
 let story = null;
